@@ -1,0 +1,27 @@
+// Here is where you can define your constants for your application and to configure the blueprint framework.
+// Feel free to delete these if you want keep the defaults:
+
+$blueprint-grid-columns: 24
+$blueprint-container-size: 1000px
+$blueprint-grid-margin: 10px
+
+// Use this to calculate the width based on the total width.
+// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin
+
+@import "partials/html5reset"
+@import "blueprint"
+@import "partials/mixins"
+@import "compass/css3"
+
+// this color is the highlight color used throughout the site
+$sitebasecolor: #66CCFF	
+
+// this grey is used in the header background and for text
+$sitegreycolor: #333
+
+// header height can be changed
+// it will alter the nav height too
+// you might need to change the margin of the header h1 (site name)
+$headerheight: 125px
+$navheight: $headerheight/3

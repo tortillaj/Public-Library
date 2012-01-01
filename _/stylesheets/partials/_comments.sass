@@ -1,0 +1,19 @@
+// This is for overriding regular styles for comments
+
+#main .commentlist
+  h1
+    @include font-18
+    border: none
+  h2
+    @include font-14
+  h3, h4, h5, h6
+    @include font-10
+  blockquote
+    margin: 0 5%
+    padding: 0 5%
+    background: lighten($sitegreycolor, 30%)
+    cite
+      @include font-10
+      float: none
+    cite:before
+      content: "--"
