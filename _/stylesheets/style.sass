@@ -1,0 +1,488 @@
+/*   
+/* Theme Name: Public Library
+/* Theme URI: 
+/* Description: A tidy theme for Wordpress.
+/* Author: James Cole
+/* Author URI: http://tortillaj.com
+/* Version: 1
+
+/*	HTML5 Reset Wordpress Theme :: style.css
+/*	----------------------------------------------------------
+/*	We have learned much from/been inspired by/taken code where offered from:
+	
+/*	Eric Meyer					:: http://ericmeyer.com
+/*	HTML5 Doctor				:: http://html5doctor.com
+/*	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+	
+/*	Special thanks: The Wordpress theme owes its start to an empty theme authored 
+/*		by Chris Coyier & Jeff Starr: http://digwp.com
+
+@import "partials/base"
+
+//****************************************************************
+//      Structure Defaults
+//****************************************************************
+
+html
+
+body
+  // background: url(_/images/grilled.png) repeat top left
+  // background-color: lighten($sitebasecolor, 20%)
+
+#page-wrap
+  // @include showgrid
+  // @include container
+  width: $blueprint-container-size
+  float: left
+  margin: 0 0 50px 20px
+  overflow: visible
+  padding-top: 50px
+
+#main
+  position: relative
+
+a
+  text-decoration: none
+  
+a[role="banner"]
+  @include greybackstyle
+  width: 100%
+  height: $headerheight
+  float: left
+  display: block
+  text-align: left
+  div
+    @include fontstyle(0,0.75em,1em)
+    margin-left: 20px
+  header
+    width: 100%
+    height: $headerheight - 40px
+    h1, h2
+      margin: 10px 0 0 20px
+      color: $sitebasecolor
+      @include fontstyle(0, 4em, 1)
+a[role="banner"]:hover
+  text-decoration: none
+#mainnavigation
+  @include greybackstyle
+  height: $navheight
+  float: left
+  width: 100%
+  border-top: 1px solid $sitebasecolor
+  .menu
+    margin-left: (5 * $blueprint-grid-width) + (5 * $blueprint-grid-margin) + 20px
+    position: relative
+    border-left: 1px solid $sitebasecolor
+  .menu li
+    list-type: none
+    @include inline-block
+    @include spancols(3)
+    height: $navheight
+    line-height: $navheight
+    text-align: center
+    a
+      display: block
+      width: 100%
+      height: 100%
+      color: $sitebasecolor
+    a:hover
+      @include single-transition($default-transition-property, 0.25s, linear)
+      @include invertgreybackstyle
+      text-decoration: none
+    .sub-menu
+      margin: 0
+      float: left
+      left: -9999px
+      top: -$navheight - 2
+      position: absolute
+      z-index: 100
+      li
+        background-color: $sitebasecolor
+        border: 1px solid $sitebasecolor
+        border-left: none
+        float: left
+        a
+          @include greybackstyle
+          line-height: $navheight
+        a:hover
+          @include invertgreybackstyle
+      li:first-child
+        border-left: 1px solid $sitebasecolor
+  .menu li:hover
+    .sub-menu
+      left: 0
+      z-index: 100
+
+#sidebar
+  @include spancols(4)
+  float: left
+  font-size: 0.9em
+  h4
+    @include fontstyle(0.5em,1.25em,1.8em)
+    font-weight: 100
+    text-transform: uppercase
+  li
+    display: block
+    float: left
+    width: 100%
+    border-top: 1px solid $sitegreycolor
+    margin-bottom: 5px
+    a
+      color: $sitegreycolor
+      display: block
+      text-decoration: none
+      width: 89%
+      padding-left: 5%
+      word-wrap: break-word
+      float: left
+    a:hover
+      @include single-transition($default-transition-property, 0.25s, linear)
+    span
+      overflow: hidden
+      display: block
+  li:hover
+    background-color: $sitegreycolor
+    color: $sitebasecolor
+    a
+      color: $sitebasecolor
+  .post-count
+    float: left
+    padding-right: 3%
+  .widget
+    width: 100%
+    float: left
+    margin-bottom: 30px
+    
+section
+  @include spancols(12)
+  float: left
+  margin-left: $blueprint-grid-margin*2 + $blueprint-grid-width
+  .thispagetype
+    position: absolute
+    top: 63px
+    right: 0
+    display: block
+    text-transform: uppercase
+
+article
+  margin: 0 0 20px
+  padding: 50px 0
+  border-bottom: 1px solid $sitebasecolor
+  box-shadow: 0 1px 0 lighten($sitegreycolor, 70%)
+  img.attachment-50x50.wp-post-image
+    float: left
+    margin-right: $blueprint-grid-margin
+  a
+    font-weight: bold
+    color: $sitegreycolor
+  span.pagination
+    clear: left
+    float: left
+    margin: 30px 0
+  .entry-content
+    a:hover
+      text-decoration: underline
+  blockquote
+    margin: 30px 5%
+    padding: 15px 5% 10px
+    border-top: 1px dotted lighten($sitegreycolor, 30%)
+    border-bottom: 1px dotted lighten($sitegreycolor, 30%)
+    cite
+      @include font-10
+      float: none
+    cite:before
+      content: "--"
+
+.blog article, .archive article, .category article
+  h2
+    float: left
+
+article:last-child
+  border: none
+
+article:first-child
+  padding-top: 0
+  
+footer.thepostmeta
+  clear: left
+  min-height: 75px
+  ul
+    height: inherit
+    margin-top: 50px
+    // border-top: 1px dotted $sitegreycolor
+  li
+    @include inline-block
+    width: 100px
+    border-right: 1px dotted $sitegreycolor
+    min-height: 65px
+    padding: 10px 10px 0
+    text-align: center
+    a:hover
+      display: inline
+      text-decoration: underline
+    .postmetainfo
+      display: block
+      width: 100%
+    .postmetainfo:after
+      content: "  \00BB"
+    .postmetainfo:before
+      content: "\00AB  "
+  li:last-child
+    border: none
+
+// single, category and archive pages
+.single, .category, .archive
+  article
+    padding: 0
+    .vcard
+      display: inline
+    footer.thepostmeta
+      min-height: 5px
+      margin: 50px 0 15px
+
+
+        
+#footer
+  width: 100%
+  float: left
+  height: $headerheight
+  @include greybackstyle
+  padding: 20px
+  a
+    color: $sitebasecolor
+  a:hover
+    text-decoration: underline
+
+// widgets
+#sidebar .widget_recent_entries li
+  width: 100%
+  
+#sidebar .widget_categories li
+  border: none
+  a
+    text-transform: capitalize
+    width: 95%
+  .category-name
+    width: 89%
+    float: left
+    white-space: nowrap
+    font-weight: bold
+    span:after
+      content: "........................................."
+      font-weight: normal
+  .post-count
+    margin-left: 1%
+    padding: 0
+    width: 10%
+  
+#sidebar .widget_archive li
+  width: 46%
+  margin-right: 2%
+  a
+    font-weight: bold
+  .post-count
+    font-weight: normal
+    font-style: italic
+
+ol.commentlist
+  a
+    color: $sitegreycolor
+  li
+    list-style: none
+    padding: 15px 5px
+    margin: 10px 0
+    border-bottom: 1px double $sitegreycolor
+  li:nth-child(even)
+    background: lighten($sitebasecolor, 20%)
+  .commentmetainfo
+    margin-bottom: 10px
+  img.avatar
+    float: left
+    margin-right: 5px
+  cite
+    @include fontstyle(0, 1.4em, 1.4em)
+  cite, .commentdatelink
+    float: left
+    width: 80%
+  .warning
+    background: #EEE8AA
+    padding: 5px 10px
+    float: left
+    width: 380px
+  .commentmetainfo
+    img
+      float: left
+  .children
+    padding: 0
+    li
+      border-top: 1px dotted lighten($sitegreycolor, 50%)
+      border-bottom: none
+      padding: 10px 0 0
+      margin-top: 20px
+    .warning
+      width: 350px
+
+#respond
+  input[type="text"]
+    width: 200px
+  textarea
+    width: 95%
+    height: 150px
+    resize: vertical
+
+input[type="submit"], .comment-reply-link
+  @include standardbutton
+input[type="submit"]:hover, .comment-reply-link:hover
+  @include standardbuttonhover
+input[type="submit"]:active, .comment-reply-link:active
+  @include standardbuttonactive
+.comment-reply-link:hover, .comment-reply-link:active
+  text-decoration: none
+
+
+// Handling images in posts
+.wp-caption
+  padding: 4px 2px 2px
+  border: 1px solid $sitegreycolor
+  background: lighten($sitebasecolor, 20%)
+  margin: 10px
+  text-align: center
+  max-width: 100%
+img.aligncenter, img.alignright, img.alignleft, img.alignnone
+  max-width: 150px
+  max-height: 150px
+  padding: 2px
+  border: 1px solid $sitegreycolor
+  background: lighten($sitebasecolor, 20%)
+.wp-caption.alignnone, .wp-caption.aligncenter
+  margin: 10px auto
+img.alignnone, img.aligncenter
+  display: block
+img.aligncenter
+  margin: 10px auto
+img.alignnone
+  margin: 10px
+img.alignright, .wp-caption.alignright
+  float: right 
+  margin: 10px 0 10px 10px 
+img.alignleft, .wp-caption.alignleft
+  float: left
+  margin: 10px 10px 10px 0
+img.size-full
+  max-width: 100%
+  max-height: 500px // arbitrary 'big' number, can be made bigger
+  height: auto
+  width: auto
+
+.next-posts
+  float: left
+.prev-posts
+  float: right
+  
+.comments-link
+  float: right
+  position: relative
+  display: block
+  width: 30px
+  height: 30px
+  text-align: center
+  color: $sitebasecolor
+  background: $sitegreycolor
+  font-size: 18px
+  line-height: 30px
+  
+.comments-link:hover
+  text-decoration: none
+  color: white
+  
+.comments-link:before
+  content: ""
+  position: absolute
+  bottom: -14px
+  right: 0
+  border-width: 0 0 14px 22px
+  border-style: solid
+  border-color: transparent $sitegreycolor
+
+.comments-link:after
+  content: ""
+  position: absolute
+  bottom: -14px
+  right: 15px
+  border-width: 0 0 14px 7px
+  border-style: solid
+  border-color: transparent #fff
+
+
+//***************************************************************
+//		Some lesser used elements
+//***************************************************************
+table
+  width: 100%
+  tr:nth-child(even)
+    background: lighten($sitebasecolor, 20%)
+dl
+  dt, dd
+    float: left
+    padding: 10px 0
+  dt
+    width: 30%
+  dd
+    width: 70%
+
+
+//****************************************************************
+//      Links, Fonts and Typography
+//****************************************************************
+  
+h1, h2, h3
+  font-family: Tinos
+  a:hover
+    text-decoration: none
+        
+#main h1
+  color: $sitegreycolor
+  @include font-48
+  padding: 1.3481em 0 0
+  padding: 0.3em 0
+    
+h2
+  @include font-24
+  padding: 1.5em 0 0
+
+h3
+  @include font-14
+  padding: 1.3988em 0 0
+  a
+    text-decoration: none
+
+h4
+  @include font-12
+
+h5
+
+p
+  margin-bottom: 1em
+
+span.vcard
+  display: block
+
+#main .entry-title, a[role="banner"] h1, a[role="banner"] h2
+  padding: 0
+#main h1.entry-title
+  border-bottom: 1px solid lighten($sitebasecolor, 10%)
+
+//****************************************************************
+//      Forms
+//****************************************************************
+
+form
+  @include blueprint-form
+
+
+//****************************************************************
+//      Print and Media Queries
+//****************************************************************
+@import "partials/comments"
+@import "partials/print"
+@import "partials/media"
